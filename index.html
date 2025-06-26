@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Music Player</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <div id="musicPlayer">
+    <div id="fileSection">
+      <input type="file" id="fileInput" accept="audio/mp3,audio/mpeg,audio/wav,audio/ogg,audio/m4a,.mp3,.wav,.ogg,.m4a"
+        multiple>
+      <label for="fileInput">Choose Music Files (MP3, WAV, OGG, M4A)</label>
+    </div>
+
+    <div id="playerSection">
+      <audio id="audioPlayer" preload="metadata"></audio>
+
+      <div id="trackInfo">
+        <div id="trackTitle">No track selected</div>
+        <div id="trackTime">
+          <span id="currentTime">0:00</span> / <span id="totalTime">0:00</span>
+        </div>
+      </div>
+
+      <div id="progressContainer">
+        <div id="progressBar">
+          <div id="progressFill"></div>
+        </div>
+      </div>
+
+      <div id="controls">
+        <button id="prevBtn">Previous</button>
+        <button id="playPauseBtn">Play</button>
+        <button id="nextBtn">Next</button>
+      </div>
+
+      <div id="cropSectaion">
+        <h3>Crop & Loop</h3>
+        <div id="cropControls">
+          <label>Start Time: <input type="number" id="cropStart" min="0" step="0.1" value="0"></label>
+          <label>End Time: <input type="number" id="cropEnd" min="0" step="0.1" value="0"></label>
+          <button id="setCropBtn">Set Crop</button>
+          <button id="toggleLoopBtn">Enable Loop</button>
+          <button id="clearCropBtn">Clear Crop</button>
+        </div>
+      </div>
+
+      <!-- <div id="playlist">
+        <h3>Playlist</h3>
+        <ul id="playlistItems"></ul>
+      </div> -->
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
