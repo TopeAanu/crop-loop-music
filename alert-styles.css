@@ -1,0 +1,58 @@
+/* Custom Alert Styles */
+.custom-alert {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  padding: 20px 30px;
+  z-index: 1000;
+  min-width: 300px;
+  max-width: 500px;
+  font-family: Arial, sans-serif;
+}
+
+.custom-alert.error {
+  border-left: 4px solid #f44336;
+  background: linear-gradient(135deg, #fff8f8 0%, #fde8e8 100%);
+}
+
+.custom-alert-content {
+  text-align: center;
+}
+
+.custom-alert-message {
+  color: #333;
+  font-size: 16px;
+  margin-bottom: 20px;
+  line-height: 1.4;
+}
+
+.custom-alert-button {
+  background: #f44336;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background 0.3s ease;
+}
+
+.custom-alert-button:hover {
+  background: #d32f2f;
+}
+
+.custom-alert-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}

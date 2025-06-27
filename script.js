@@ -90,7 +90,7 @@ class MusicPlayer {
     );
 
     if (!isSupported) {
-      alert(
+      this.showCustomAlert(
         "Unsupported audio file format. Please use MP3, WAV, OGG, or M4A files."
       );
       return;
@@ -146,7 +146,7 @@ class MusicPlayer {
       "error",
       (e) => {
         console.error("Audio error:", e, this.audioPlayer.error);
-        alert(
+        this.showCustomAlert(
           `Cannot play ${this.currentTrack.name}. This file format may not be supported by your browser.`
         );
       },
@@ -232,7 +232,7 @@ class MusicPlayer {
       this.audioPlayer.currentTime = start;
       console.log("Crop set from", start, "to", end);
     } else {
-      alert("Invalid crop times. Please check your values.");
+      this.showCustomAlert("Invalid crop times. Please check your values.");
     }
   }
 
@@ -243,7 +243,7 @@ class MusicPlayer {
       : "Enable Loop";
 
     if (this.isLooping && !this.isCropped) {
-      alert("Please set crop points first to enable looping.");
+      this.showCustomAlert("Please set crop points first to enable looping.");
       this.isLooping = false;
       this.toggleLoopBtn.textContent = "Enable Loop";
     }
@@ -280,6 +280,40 @@ class MusicPlayer {
     }
     // Fallback to parsing as plain seconds
     return parseFloat(timeString) || 0;
+  }
+
+  showCustomAlert(message) {
+    // Remove any existing alerts
+    const existingAlert = document.querySelector(".custom-alert-overlay");
+    if (existingAlert) {
+      existingAlert.remove();
+    }
+
+    // Create overlay
+    const overlay = document.createElement("div");
+    overlay.className = "custom-alert-overlay";
+
+    // Create alert box
+    const alertBox = document.createElement("div");
+    alertBox.className = "custom-alert error";
+    alertBox.innerHTML = `
+      <div class="custom-alert-content">
+        <div class="custom-alert-message">${message}</div>
+        <button class="custom-alert-button">OK</button>
+      </div>
+    `;
+
+    overlay.appendChild(alertBox);
+    document.body.appendChild(overlay);
+
+    // Add click handlers
+    const okButton = alertBox.querySelector(".custom-alert-button");
+    const closeAlert = () => overlay.remove();
+
+    okButton.addEventListener("click", closeAlert);
+    overlay.addEventListener("click", (e) => {
+      if (e.target === overlay) closeAlert();
+    });
   }
 }
 
